@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "700139445675",
+    "firebase_url": "https://foodorder-5535c-default-rtdb.firebaseio.com",
     "project_id": "foodorder-5535c",
     "storage_bucket": "foodorder-5535c.firebasestorage.app"
   },
