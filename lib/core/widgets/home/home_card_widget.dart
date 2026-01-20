@@ -72,7 +72,7 @@ class HomeCards extends StatelessWidget {
         borderRadius: BorderRadius.circular(16),
         boxShadow: [
           BoxShadow(
-            color: Colors.orange.withOpacity(0.3),
+            color: Colors.grey.withOpacity(0.1),
             blurRadius: 8,
             offset: const Offset(0, 4),
           ),
@@ -139,15 +139,11 @@ class HomeCards extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(12),
       decoration: BoxDecoration(
-        gradient: LinearGradient(
-          colors: [Colors.orange.shade800, Colors.orangeAccent.shade400],
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-        ),
+        color: Colors.white,
         borderRadius: BorderRadius.circular(16),
         boxShadow: [
           BoxShadow(
-            color: Colors.orange.withOpacity(0.3),
+            color: Colors.grey.withOpacity(0.1),
             blurRadius: 8,
             offset: const Offset(0, 4),
           ),
@@ -165,7 +161,7 @@ class HomeCards extends StatelessWidget {
                 child: Text(
                   'Pesanan Masuk',
                   style: TextStyle(
-                    color: Colors.white.withOpacity(0.9),
+                    color: Colors.black,
                     fontSize: 11,
                     fontWeight: FontWeight.w500,
                   ),
@@ -176,12 +172,12 @@ class HomeCards extends StatelessWidget {
               Container(
                 padding: EdgeInsets.all(8),
                 decoration: BoxDecoration(
-                  color: Colors.white.withOpacity(0.2),
+                  color: Colors.orange.withOpacity(0.2),
                   borderRadius: BorderRadius.circular(8),
                 ),
                 child: Icon(
                   Icons.shopping_bag_outlined,
-                  color: Colors.white,
+                  color: Colors.orange,
                   size: 20,
                 ),
               ),
@@ -193,7 +189,7 @@ class HomeCards extends StatelessWidget {
               Text(
                 count.toString(),
                 style: TextStyle(
-                  color: Colors.white,
+                  color: Colors.black,
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
                 ),
@@ -202,10 +198,7 @@ class HomeCards extends StatelessWidget {
               ),
               Text(
                 'Pesanan Masuk',
-                style: TextStyle(
-                  color: Colors.white.withOpacity(0.8),
-                  fontSize: 10,
-                ),
+                style: TextStyle(color: Colors.black, fontSize: 10),
               ),
             ],
           ),
@@ -218,11 +211,11 @@ class HomeCards extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(12),
       decoration: BoxDecoration(
-        color: Colors.orange.shade800,
+        color: Colors.white,
         borderRadius: BorderRadius.circular(16),
         boxShadow: [
           BoxShadow(
-            color: Colors.orange.withOpacity(0.3),
+            color: Colors.grey.withOpacity(0.1),
             blurRadius: 8,
             offset: const Offset(0, 4),
           ),
@@ -240,7 +233,7 @@ class HomeCards extends StatelessWidget {
                 child: Text(
                   'Dalam Proses',
                   style: TextStyle(
-                    color: Colors.white.withOpacity(0.9),
+                    color: Colors.black,
                     fontSize: 11,
                     fontWeight: FontWeight.w500,
                   ),
@@ -251,12 +244,12 @@ class HomeCards extends StatelessWidget {
               Container(
                 padding: EdgeInsets.all(8),
                 decoration: BoxDecoration(
-                  color: Colors.white.withOpacity(0.2),
+                  color: Colors.orange.withOpacity(0.2),
                   borderRadius: BorderRadius.circular(8),
                 ),
                 child: Icon(
                   Icons.schedule_outlined,
-                  color: Colors.white,
+                  color: Colors.orange,
                   size: 20,
                 ),
               ),
@@ -268,7 +261,7 @@ class HomeCards extends StatelessWidget {
               Text(
                 '$count',
                 style: TextStyle(
-                  color: Colors.white,
+                  color: Colors.black,
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
                   height: -2.7,
@@ -287,15 +280,11 @@ class HomeCards extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(12),
       decoration: BoxDecoration(
-        gradient: LinearGradient(
-          colors: [Colors.orange.shade800, Colors.orangeAccent.shade400],
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-        ),
+        color: Colors.white,
         borderRadius: BorderRadius.circular(16),
         boxShadow: [
           BoxShadow(
-            color: Colors.orange.withOpacity(0.3),
+            color: Colors.grey.withOpacity(0.1),
             blurRadius: 8,
             offset: const Offset(0, 4),
           ),
@@ -311,9 +300,9 @@ class HomeCards extends StatelessWidget {
             children: [
               Expanded(
                 child: Text(
-                  'Pesanan Masuk',
+                  'Selesai',
                   style: TextStyle(
-                    color: Colors.white.withOpacity(0.9),
+                    color: Colors.black.withOpacity(0.9),
                     fontSize: 11,
                     fontWeight: FontWeight.w500,
                   ),
@@ -324,12 +313,12 @@ class HomeCards extends StatelessWidget {
               Container(
                 padding: EdgeInsets.all(8),
                 decoration: BoxDecoration(
-                  color: Colors.white.withOpacity(0.2),
+                  color: Colors.orange.withOpacity(0.2),
                   borderRadius: BorderRadius.circular(8),
                 ),
                 child: Icon(
                   Icons.arrow_upward_outlined,
-                  color: Colors.white,
+                  color: Colors.orange,
                   size: 20,
                 ),
               ),
@@ -341,7 +330,7 @@ class HomeCards extends StatelessWidget {
               Text(
                 '$count',
                 style: TextStyle(
-                  color: Colors.white,
+                  color: Colors.black,
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
                 ),
