@@ -1,7 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:food_order/core/routes/main_routes.dart';
 import 'package:food_order/features/dashboard/home_screen.dart';
-import 'package:food_order/features/keranjang/keranjang_screen.dart';
+import 'package:food_order/features/keranjang/cart_screen.dart';
 import 'package:food_order/features/pesanan/pesanan_screen.dart';
 import 'package:food_order/features/product/menu_screen.dart';
 import 'package:food_order/features/setting/setting_screen.dart';
@@ -34,7 +34,7 @@ final routerProvider = Provider<GoRouter>((ref) {
           GoRoute(
             path: '/keranjang',
             name: 'Keranjang',
-            builder: (context, state) => const KeranjangScreen(),
+            builder: (context, state) => const CartScreen(),
           ),
           GoRoute(
             path: '/setting',
