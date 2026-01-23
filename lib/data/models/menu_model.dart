@@ -3,10 +3,10 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 // ==================== ENUMS ====================
 
 enum ProductCategory {
-  semua('Semua', 'all'),
-  makanan('Makanan', 'makanan'),
-  minuman('Minuman', 'minuman'),
-  cemilan('Snack', 'snack');
+  All('Semua', 'all'),
+  Makanan('Makanan', 'makanan'),
+  Minuman('Minuman', 'minuman'),
+  Cemilan('Snack', 'snack');
 
   final String label;
   final String value;
@@ -17,15 +17,15 @@ enum ProductCategory {
   static ProductCategory fromString(String value) {
     switch (value.toLowerCase()) {
       case 'all':
-        return ProductCategory.semua;
+        return ProductCategory.All;
       case 'makanan':
-        return ProductCategory.makanan;
+        return ProductCategory.Makanan;
       case 'minuman':
-        return ProductCategory.minuman;
+        return ProductCategory.Minuman;
       case 'snack':
-        return ProductCategory.cemilan;
+        return ProductCategory.Cemilan;
       default:
-        return ProductCategory.semua;
+        return ProductCategory.All;
     }
   }
 }

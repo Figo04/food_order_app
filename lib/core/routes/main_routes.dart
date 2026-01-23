@@ -49,7 +49,10 @@ class MainRoutes extends ConsumerWidget {
         unselectedItemColor: Colors.grey,
         items: const [
           BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
-          BottomNavigationBarItem(icon: Icon(Icons.fastfood), label: 'Menu'),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.restaurant_outlined),
+            label: 'Menu',
+          ),
           BottomNavigationBarItem(
             icon: Icon(Icons.shopping_cart),
             label: 'Keranjang',

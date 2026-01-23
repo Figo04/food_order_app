@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:food_order/core/constant/apps_contans.dart';
 import 'package:food_order/core/widgets/home/home_cards_error.dart';
 import 'package:food_order/core/widgets/home/home_cards_loading.dart';
 import 'package:food_order/data/models/home_model.dart';
@@ -64,11 +65,7 @@ class HomeCards extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(12),
       decoration: BoxDecoration(
-        gradient: LinearGradient(
-          colors: [Colors.orange.shade800, Colors.orangeAccent.shade400],
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-        ),
+        gradient: AppsColor.primary,
         borderRadius: BorderRadius.circular(16),
         boxShadow: [
           BoxShadow(

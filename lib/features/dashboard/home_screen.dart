@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:food_order/core/constant/apps_contans.dart';
 import 'package:food_order/core/widgets/home/home_card_widget.dart';
 import 'package:food_order/data/provider/home_provider.dart';
 import 'package:go_router/go_router.dart';
@@ -48,14 +49,7 @@ class HomeScreen extends ConsumerWidget {
                     child: Container(
                       padding: const EdgeInsets.all(15),
                       decoration: BoxDecoration(
-                        gradient: LinearGradient(
-                          colors: [
-                            Colors.orange.shade800,
-                            Colors.orangeAccent.shade400,
-                          ],
-                          begin: Alignment.topLeft,
-                          end: Alignment.bottomRight,
-                        ),
+                        gradient: AppsColor.primary,
                         borderRadius: BorderRadius.circular(15),
                         boxShadow: [
                           BoxShadow(

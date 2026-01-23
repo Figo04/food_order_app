@@ -30,7 +30,7 @@ final productsStreamProvider = StreamProvider<List<ProductModel>>((ref) {
 
 // StateProvider untuk menyimpan kategori yang dipilih
 final selectedCategoryProvider = StateProvider<ProductCategory>((ref) {
-  return ProductCategory.semua;
+  return ProductCategory.All;
 });
 
 // ==================== SEARCH QUERY ====================
@@ -54,7 +54,7 @@ final filteredProductsProvider = Provider<AsyncValue<List<ProductModel>>>((
     // filter berdasarkan category
     var filtered = products;
 
-    if (selectedCategory != ProductCategory.semua) {
+    if (selectedCategory != ProductCategory.All) {
       filtered = filtered
           .where(
             (p) =>
