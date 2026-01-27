@@ -2,7 +2,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:food_order/core/routes/main_routes.dart';
 import 'package:food_order/features/dashboard/home_screen.dart';
 import 'package:food_order/features/keranjang/cart_screen.dart';
-import 'package:food_order/features/pesanan/pesanan_screen.dart';
+import 'package:food_order/features/order/order_screen.dart';
 import 'package:food_order/features/product/menu_screen.dart';
 import 'package:food_order/features/setting/setting_screen.dart';
 import 'package:go_router/go_router.dart';
@@ -34,7 +34,7 @@ final routerProvider = Provider<GoRouter>((ref) {
           GoRoute(
             path: '/pesanan',
             name: 'Pesanan',
-            builder: (context, state) => const PesananScreen(),
+            builder: (context, state) => const OrderScreen(),
           ),
           GoRoute(
             path: '/setting',

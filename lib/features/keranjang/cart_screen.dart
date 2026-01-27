@@ -24,7 +24,7 @@ class _CartScreenState extends ConsumerState<CartScreen> {
 
         toolbarHeight: 90,
         title: Column(
-          crossAxisAlignment: CrossAxisAlignment.start, // Ubah ke start (kiri)
+          crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisSize: MainAxisSize.min,
           children: [
             const Text(

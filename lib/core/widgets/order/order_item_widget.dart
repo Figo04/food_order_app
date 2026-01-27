@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class PesananScreen extends StatelessWidget {
-  const PesananScreen({super.key});
+class OrderItemWidget extends StatelessWidget {
+  const OrderItemWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
