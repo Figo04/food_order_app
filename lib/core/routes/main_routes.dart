@@ -11,8 +11,8 @@ class MainRoutes extends ConsumerWidget {
     final String location = GoRouterState.of(context).uri.path;
     if (location.startsWith('/home')) return 0;
     if (location.startsWith('/menu')) return 1;
-    if (location.startsWith('/pesanan')) return 2;
-    if (location.startsWith('/keranjang')) return 3;
+    if (location.startsWith('/keranjang')) return 2;
+    if (location.startsWith('/pesanan')) return 3;
     if (location.startsWith('/setting')) return 4;
     return 0;
   }
@@ -26,10 +26,10 @@ class MainRoutes extends ConsumerWidget {
         context.go('/menu');
         break;
       case 2:
-        context.go('/pesanan');
+        context.go('/keranjang');
         break;
       case 3:
-        context.go('/keranjang');
+        context.go('/pesanan');
         break;
       case 4:
         context.go('/setting');

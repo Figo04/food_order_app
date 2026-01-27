@@ -27,14 +27,14 @@ final routerProvider = Provider<GoRouter>((ref) {
             builder: (context, state) => const MenuScreen(),
           ),
           GoRoute(
-            path: '/pesanan',
-            name: 'Pesanan',
-            builder: (context, state) => const PesananScreen(),
-          ),
-          GoRoute(
             path: '/keranjang',
             name: 'Keranjang',
             builder: (context, state) => const CartScreen(),
+          ),
+          GoRoute(
+            path: '/pesanan',
+            name: 'Pesanan',
+            builder: (context, state) => const PesananScreen(),
           ),
           GoRoute(
             path: '/setting',

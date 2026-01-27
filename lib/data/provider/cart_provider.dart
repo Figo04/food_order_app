@@ -43,7 +43,7 @@ class CartNotifier extends StateNotifier<CartState> {
       (item) => item.product.id == product.id,
     );
 
-    if (existingIndex != 0) {
+    if (existingIndex >= 0) {
       // jika product sudah ada di cart, tambahkan quantity
       final existingItem = currentItems[existingIndex];
       final newQuantity = existingItem.quantity + 1;
@@ -71,8 +71,10 @@ class CartNotifier extends StateNotifier<CartState> {
   }
 
   // hapus product dari cart
-  void removeProduct (String productId) {
-    final currentItems = state.items.where((item) => item.product.id != productId).toList();
+  void removeProduct(String productId) {
+    final currentItems = state.items
+        .where((item) => item.product.id != productId)
+        .toList();
     state = state.copyWith(items: currentItems);
   }
 
@@ -83,21 +85,47 @@ class CartNotifier extends StateNotifier<CartState> {
 
   // get quantity product di cart
   int getProductQuantity(String productId) {
-    final item = state.items.firstWhere((item) => item.product.id == productId,
-      orElse: () =>  CartItem(product : ProductModel(
-        id: '',
-        name: '',
-        description: '',
-        price: 0,
-        category: '',
-        stock: 0,
-        isAvailable: false,
-        createdAt: DateTime.now(),
-        updatedAt: DateTime.now(),
-        imageUrl: '',
-      ), quantity: 0)
+    final item = state.items.firstWhere(
+      (item) => item.product.id == productId,
+      orElse: () => CartItem(
+        product: ProductModel(
+          id: '',
+          name: '',
+          description: '',
+          price: 0,
+          category: '',
+          stock: 0,
+          isAvailable: false,
+          createdAt: DateTime.now(),
+          updatedAt: DateTime.now(),
+          imageUrl: '',
+        ),
+        quantity: 0,
+      ),
     );
     return item.quantity;
+  }
+
+  // Di cart_provider.dart, tambahkan method ini:
+
+  void decreaseProduct(String productId) {
+    final currentItems = List<CartItem>.from(state.items);
+    final index = currentItems.indexWhere(
+      (item) => item.product.id == productId,
+    );
+
+    if (index >= 0) {
+      final item = currentItems[index];
+      if (item.quantity > 1) {
+        // Kurangi quantity
+        currentItems[index] = item.copyWith(quantity: item.quantity - 1);
+      } else {
+        // Hapus item jika quantity = 1
+        currentItems.removeAt(index);
+      }
+
+      state = state.copyWith(items: currentItems);
+    }
   }
 }
 

@@ -2,10 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:food_order/core/constant/apps_contans.dart';
 import 'package:food_order/data/models/menu_model.dart';
-import 'package:food_order/data/models/cart_model.dart';
-import 'package:food_order/core/widgets/menu/product_cart_widget.dart';
 import 'package:food_order/data/provider/cart_provider.dart';
-import 'package:food_order/data/provider/menu_provider.dart';
+
 import 'package:intl/intl.dart';
 
 class ProductCard extends ConsumerWidget {

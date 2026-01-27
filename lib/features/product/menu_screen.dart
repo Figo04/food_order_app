@@ -109,7 +109,7 @@ class _MenuScreenState extends ConsumerState<MenuScreen> {
                         decoration: BoxDecoration(
                           gradient: isSelected ? AppsColor.primary : null,
                           color: Colors.white,
-                          borderRadius: BorderRadius.circular(20),
+                          borderRadius: BorderRadius.circular(16),
                           border: Border.all(
                             color: isSelected
                                 ? Colors.transparent
