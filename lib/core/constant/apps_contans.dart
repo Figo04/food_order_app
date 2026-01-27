@@ -12,7 +12,7 @@ class AppsColor {
   );
 }
 
-IconData CategoryIcon(ProductCategory category) {
+IconData categoryIcon(ProductCategory category) {
   switch (category) {
     case ProductCategory.All:
       return Icons.grid_view_outlined;

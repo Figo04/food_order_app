@@ -130,7 +130,7 @@ class _MenuScreenState extends ConsumerState<MenuScreen> {
                           mainAxisSize: MainAxisSize.min,
                           children: [
                             Icon(
-                              CategoryIcon(category),
+                              categoryIcon(category),
                               size: 16,
                               color: isSelected ? Colors.white : Colors.black,
                             ),
