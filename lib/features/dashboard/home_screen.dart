@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:food_order/core/constant/apps_contans.dart';
 import 'package:food_order/core/widgets/home/home_card_widget.dart';
+import 'package:food_order/core/widgets/order/order_item_widget.dart';
 import 'package:food_order/data/provider/home_provider.dart';
+import 'package:food_order/data/provider/order_provider.dart';
 import 'package:go_router/go_router.dart';
 
 class HomeScreen extends ConsumerWidget {
@@ -112,7 +114,9 @@ class HomeScreen extends ConsumerWidget {
                         ),
                       ),
                       TextButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          context.go('/pesanan');
+                        },
                         style: TextButton.styleFrom(
                           padding: EdgeInsets.only(left: 105),
                           minimumSize: Size(0, 0),
@@ -134,70 +138,142 @@ class HomeScreen extends ConsumerWidget {
                     ],
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.all(19),
-                  child: Container(
-                    padding: const EdgeInsets.all(55),
-                    alignment: Alignment(0, 0),
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(15),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.black.withOpacity(0.2),
-                          blurRadius: 8,
-                          offset: const Offset(0, 4),
-                        ),
-                      ],
-                    ),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        // Icon dengan background circle
-                        Container(
-                          padding: const EdgeInsets.all(20),
-                          decoration: BoxDecoration(
-                            color: Colors.grey.shade200,
-                            shape: BoxShape.circle,
-                          ),
-                          child: Icon(
-                            Icons.shopping_bag_outlined,
-                            size: 50,
-                            color: Colors.grey.shade600,
-                          ),
-                        ),
-
-                        const SizedBox(height: 20),
-
-                        // Judul
-                        Text(
-                          'Belum Ada Pesanan',
-                          style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.black,
-                          ),
-                        ),
-
-                        const SizedBox(height: 8),
-
-                        // Subtitle
-                        Text(
-                          'Pesanan baru akan muncul di sini',
-                          style: TextStyle(
-                            fontSize: 14,
-                            color: Colors.grey.shade600,
-                          ),
-                          textAlign: TextAlign.center,
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
+                // pesanan
+                _buildRecentOrdersSection(context, ref),
               ],
             ),
           ),
+        ),
+      ),
+    );
+  }
+
+  // ==================== RECENT ORDERS SECTION ====================
+
+  Widget _buildRecentOrdersSection(BuildContext context, WidgetRef ref) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 16),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          // Orders List atau Empty State
+          Consumer(
+            builder: (context, ref, child) {
+              final ordersAsync = ref.watch(ordersStreamProvider);
+
+              return ordersAsync.when(
+                data: (orders) {
+                  // Ambil 3 pesanan terbaru
+                  final recentOrders = orders
+                      .where((order) => order.paymentStatus == 'unpaid')
+                      .take(1)
+                      .toList();
+
+                  // Jika kosong, tampilkan empty state
+                  if (recentOrders.isEmpty) {
+                    return _buildEmptyOrders(context);
+                  }
+
+                  // Jika ada pesanan, tampilkan list
+                  return Column(
+                    children: recentOrders.map((order) {
+                      return OrderItemWidget(order: order);
+                    }).toList(),
+                  );
+                },
+                loading: () => Center(
+                  child: Padding(
+                    padding: const EdgeInsets.all(32),
+                    child: CircularProgressIndicator(
+                      color: Colors.orange.shade600,
+                    ),
+                  ),
+                ),
+                error: (error, stack) => Container(
+                  padding: const EdgeInsets.all(20),
+                  decoration: BoxDecoration(
+                    color: Colors.red.shade50,
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  child: Row(
+                    children: [
+                      Icon(Icons.error_outline, color: Colors.red.shade700),
+                      const SizedBox(width: 12),
+                      Expanded(
+                        child: Text(
+                          'Gagal memuat pesanan',
+                          style: TextStyle(color: Colors.red.shade700),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              );
+            },
+          ),
+        ],
+      ),
+    );
+  }
+
+  // ==================== EMPTY ORDERS STATE ====================
+
+  Widget _buildEmptyOrders(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.all(19),
+      child: Container(
+        padding: const EdgeInsets.all(55),
+        alignment: Alignment(0, 0),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(15),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(0.2),
+              blurRadius: 8,
+              offset: const Offset(0, 4),
+            ),
+          ],
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            // Icon dengan background circle
+            Container(
+              padding: const EdgeInsets.all(20),
+              decoration: BoxDecoration(
+                color: Colors.grey.shade200,
+                shape: BoxShape.circle,
+              ),
+              child: Icon(
+                Icons.shopping_bag_outlined,
+                size: 50,
+                color: Colors.grey.shade600,
+              ),
+            ),
+
+            const SizedBox(height: 20),
+
+            // Judul
+            Text(
+              'Belum Ada Pesanan',
+              style: TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+                color: Colors.black,
+              ),
+            ),
+
+            const SizedBox(height: 8),
+
+            // Subtitle
+            Text(
+              'Pesanan baru akan muncul di sini',
+              style: TextStyle(fontSize: 14, color: Colors.grey.shade600),
+              textAlign: TextAlign.center,
+            ),
+          ],
         ),
       ),
     );
