@@ -65,7 +65,7 @@ class OrderScreen extends ConsumerWidget {
                     itemCount: orders.length,
                     itemBuilder: (context, index) {
                       final order = orders[index];
-                      return OrderItemWidget();
+                      return OrderItemWidget(order: order);
                     },
                   ),
                 );

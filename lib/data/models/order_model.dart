@@ -3,7 +3,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 // ==================== ORDER STATUS ENUM ====================
 
 enum OrderStatus {
-  pending('Menunggu', 'pending'),
+  pending('Pending', 'pending'),
   processing('Diproses', 'processing'),
   ready('Siap', 'ready'),
   completed('Selesai', 'completed');
@@ -16,13 +16,13 @@ enum OrderStatus {
   // convert string ke enum
   static OrderStatus fromString(String value) {
     switch (value.toLowerCase()) {
-      case 'menunggu':
+      case 'pending':
         return OrderStatus.pending;
-      case 'diproses':
+      case 'processing':
         return OrderStatus.processing;
-      case 'siap':
+      case 'ready':
         return OrderStatus.ready;
-      case 'selesai':
+      case 'completed':
         return OrderStatus.completed;
       default:
         return OrderStatus.pending;
@@ -49,11 +49,11 @@ class OrderItem {
 
   factory OrderItem.fromMap(Map<String, dynamic> map) {
     return OrderItem(
-      productId: map['product_id'] as String? ?? '',
-      productName: map['product_name'] as String? ?? '',
+      productId: map['productId'] as String? ?? '',
+      productName: map['productName'] as String? ?? '',
       price: (map['price'] as num?)?.toDouble() ?? 0.0,
       quantity: map['quantity'] as int? ?? 0,
-      subTotal: (map['sub_total'] as num?)?.toDouble() ?? 0.0,
+      subTotal: (map['subtotal'] as num?)?.toDouble() ?? 0.0,
     );
   }
 
@@ -107,22 +107,22 @@ class OrderModel {
 
     return OrderModel(
       id: doc.id,
-      orderNumber: data['order_number'] as String? ?? '',
-      customerName: data['customer_name'] as String? ?? 'Guest',
+      orderNumber: data['orderNumber'] as String? ?? '',
+      customerName: data['customerName'] as String? ?? 'Guest',
       items:
           (data['items'] as List<dynamic>?)
               ?.map((item) => OrderItem.fromMap(item as Map<String, dynamic>))
               .toList() ??
           [],
-      subTotal: (data['sub_total'] as num?)?.toDouble() ?? 0.0,
+      subTotal: (data['subtotal'] as num?)?.toDouble() ?? 0.0,
       total: (data['total'] as num?)?.toDouble() ?? 0.0,
       status: OrderStatus.fromString(data['status'] as String? ?? 'pending'),
-      paymentMethod: data['payment_method'] as String? ?? 'cash',
-      paymentStatus: data['payment_status'] as String? ?? 'unpaid',
-      note: data['note'] as String? ?? '',
-      createdAt: (data['created_at'] as Timestamp?)?.toDate() ?? DateTime.now(),
-      updatedAt: (data['updated_at'] as Timestamp?)?.toDate() ?? DateTime.now(),
-      completedAt: (data['completed_at'] as Timestamp?)?.toDate(),
+      paymentMethod: data['paymentMethod'] as String? ?? 'cash',
+      paymentStatus: data['paymentStatus'] as String? ?? 'unpaid',
+      note: data['notes'] as String?,
+      createdAt: (data['createdAt'] as Timestamp?)?.toDate() ?? DateTime.now(),
+      updatedAt: (data['updatedAt'] as Timestamp?)?.toDate() ?? DateTime.now(),
+      completedAt: (data['completedAt'] as Timestamp?)?.toDate(),
     );
   }
   // convert ke map untuk firestore

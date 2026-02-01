@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:food_order/core/helper/order_number_generator.dart';
 import 'package:food_order/core/widgets/keranjang/cart_item_widget.dart';
 import 'package:food_order/data/provider/cart_provider.dart';
 import 'package:food_order/data/provider/cart_screen_provider.dart';
@@ -217,9 +218,7 @@ Future<void> _handleCheckout(
 
   try {
     // generate order number
-    final now = DateTime.now();
-    final orderNumber =
-        'ORD-${now.year}${now.month.toString().padLeft(2, '0')}${now.day.toString().padLeft(2, '0')}-${now.millisecondsSinceEpoch.toString().substring(8)}';
+    final orderNumber = await OrderNumberGenerator.generate();
 
     // Prepare Order Data
     final orderData = {

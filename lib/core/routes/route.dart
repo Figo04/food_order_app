@@ -4,7 +4,7 @@ import 'package:food_order/features/dashboard/home_screen.dart';
 import 'package:food_order/features/keranjang/cart_screen.dart';
 import 'package:food_order/features/order/order_screen.dart';
 import 'package:food_order/features/product/menu_screen.dart';
-import 'package:food_order/features/setting/setting_screen.dart';
+import 'package:food_order/features/setting/setting_menu_screen.dart';
 import 'package:go_router/go_router.dart';
 
 final routerProvider = Provider<GoRouter>((ref) {
@@ -39,7 +39,7 @@ final routerProvider = Provider<GoRouter>((ref) {
           GoRoute(
             path: '/setting',
             name: 'Setting',
-            builder: (context, state) => const SettingScreen(),
+            builder: (context, state) => const SettingMenuScreen(),
           ),
         ],
       ),
