@@ -1,16 +1,63 @@
-# food_order
+# 🍔 Food Order App
 
-A new Flutter project.
+**Food Order App** adalah aplikasi mobile pemesanan makanan yang dibuat dengan **Flutter**.  
+Aplikasi ini memungkinkan pengguna untuk melihat daftar makanan, menambahkannya ke keranjang, dan melakukan pemesanan dengan mudah. Proyek ini juga dirancang sebagai starter project Flutter untuk memperluas fitur lebih jauh.
 
-## Getting Started
+📌 Repo: https://github.com/Figo04/food_order_app
 
-This project is a starting point for a Flutter application.
+---
 
-A few resources to get you started if this is your first Flutter project:
+## 📌 Fitur Utama
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+> ⚠️ *Sesuaikan daftar fitur ini dengan fitur yang sudah kamu implementasikan*
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- 📜 Daftar menu makanan 📋  
+- 🛒 Tambah/menghapus item di keranjang  
+- 🔍 Pencarian makanan berdasarkan nama  
+- 📊 Total harga pesanan  
+- 🔔 Notifikasi pesanan (opsional)  
+- ⚙️ Otentikasi pengguna (Email/Password)  
+- 💾 Penyimpanan data dengan Firebase / Local DB (opsional)
+
+---
+
+## 📁 Struktur Folder
+
+food_order_app/
+├── android/
+├── ios/
+├── lib/
+│ ├── models/
+│ ├── screens/
+│ ├── widgets/
+│ ├── services/
+│ └── main.dart
+├── test/
+├── web/
+├── pubspec.yaml
+└── README.md
+
+
+---
+
+## 🚀 📦 Teknologi & Dependensi
+
+Aplikasi ini dibuat dengan:
+
+- 🧰 **Flutter** – UI framework dengan Dart  
+- 📦 Flutter Packages (tambahkan paket yang digunakan)  
+  - `provider` / `bloc` / `riverpod` – state management  
+  - `http` / `dio` – HTTP requests  
+  - `firebase_auth` (jika menggunakan Firebase Auth)  
+  - `cloud_firestore` (jika menggunakan Firestore)  
+  - `shared_preferences` / `sqflite` – penyimpanan lokal
+
+Contoh di `pubspec.yaml`:
+
+```yaml
+dependencies:
+  flutter:
+    sdk: flutter
+  provider: ^6.0.0
+  http: ^0.14.0
+  flutter_svg: ^1.1.0
